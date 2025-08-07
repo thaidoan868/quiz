@@ -1,0 +1,49 @@
+{
+  "site": "planets",
+  "description": "information about solar planets",
+  "pages": [
+    {
+      "slug": "/planets/earth",
+      "title": "Overview",
+      "sections": [
+        {
+          "header": "Inner Planets",
+          "headerType": "h1",
+          "content": [
+            {
+              "header": "Mercury Facts",
+              "headerType": "h3",
+              "content": "Mercury is the planet nearest to the Sun, and the smallest planet in our solar system."
+            },
+            {
+              "header": "Venus Facts",
+              "headerType": "h3",
+              "content": "Venus is the second planet from the Sun, and the sixth largest planet."
+            }
+          ]
+        },
+        {
+          "header": "Does Earth have life?",
+          "headerType": "h2",
+          "content": "Yes, Earth is the only known planet to support life."
+        }
+      ]
+    },
+    {
+      "slug": "/planets/mars",
+      "title": "mars",
+      "sections": [
+        {
+          "header": "Is Mars red?",
+          "headerType": "h1",
+          "content": "Yes, due to iron oxide (rust) on its surface."
+        },
+        {
+          "header": "Is there water on Mars?",
+          "headerType": "h2",
+          "content": "Yes, frozen water exists at the poles."
+        }
+      ]
+    }
+  ]
+}
