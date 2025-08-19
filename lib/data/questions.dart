@@ -1,7 +1,8 @@
 import 'package:quiz/models/answer.dart';
 import 'package:quiz/models/question.dart';
+import 'package:quiz/models/questions.dart';
 
-var questions = [
+List<Question> questionsList = [
   Question(
     question: "What is Flutter?",
     answers: [
@@ -68,3 +69,5 @@ var questions = [
     ],
   ),
 ];
+
+Questions questions = Questions(questionsList);

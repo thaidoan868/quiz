@@ -11,7 +11,7 @@ class Question {
   Answer? _selectedAnswer;
 
   String get question => _question;
-  
+
   List get answers => List.unmodifiable(_answers);
 
   Answer? get selectedAnswer => _selectedAnswer;
@@ -34,5 +34,14 @@ class Question {
     final List<Answer> shuffledAnswers = List.of(_answers);
     shuffledAnswers.shuffle();
     return shuffledAnswers;
+  }
+
+  Answer? getCorrectAnswer() {
+    for (Answer answer in answers) {
+      if (answer.isCorrect) {
+        return answer;
+      }
+    }
+    return null;
   }
 }

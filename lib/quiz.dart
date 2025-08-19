@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/data/questions.dart';
 import 'package:quiz/screens/questions_screen.dart';
+import 'package:quiz/screens/results_screen.dart';
 import 'package:quiz/screens/start_screen.dart';
 
 class Quiz extends StatefulWidget {
@@ -25,12 +26,12 @@ class _QuizState extends State<Quiz> {
   void initState() {
     super.initState();
     screens = {
-      "start": StartScreen(
-        nextScreen: () {
-          setScreen("questions");
-        },
+      "start": StartScreen(nextScreen: () => setScreen("questions")),
+      "questions": QuestionsScreen(
+        questions: questions,
+        nextScreen: () => setScreen("results"),
       ),
-      "questions": QuestionsScreen(questions: questions),
+      "results": ResultsScreen(questions: questions),
     };
   }
 

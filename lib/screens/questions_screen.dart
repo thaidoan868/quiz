@@ -2,27 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz/models/answer.dart';
 import 'package:quiz/models/question.dart';
+import 'package:quiz/models/questions.dart';
 import 'package:quiz/widgets/answer_button.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  List<Question> questions;
-  QuestionsScreen({super.key, required this.questions});
+  final Questions questions;
+  final void Function() nextScreen;
+  QuestionsScreen({super.key, required this.questions, required this.nextScreen})
+    : assert(
+        questions.getLength() > 0,
+        "Questions can not be empty. Questions screen need some questions to display.",
+      );
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
-  late List<Question> questions;
-  var currentQuestionIndex = 0;
+  late Questions questions;
+  late void Function() nextScreen;
+  int currentQuestionIndex = 0;
   List<Answer> selectedAnswers = [];
 
   void answerQuestion(Question question, Answer answer) {
     question.selectedAnswer = answer;
-    if (currentQuestionIndex < questions.length - 1) {
+    if (currentQuestionIndex + 1 < questions.getLength()) {
       setState(() {
         currentQuestionIndex++;
       });
+    } else if (currentQuestionIndex + 1 == questions.getLength()) {
+      nextScreen();
     }
   }
 
@@ -30,11 +39,12 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   void initState() {
     super.initState();
     questions = widget.questions;
+    nextScreen = widget.nextScreen;
   }
 
   @override
   Widget build(BuildContext context) {
-    final currentQuestion = questions[currentQuestionIndex];
+    final currentQuestion = questions.questions[currentQuestionIndex];
     return SizedBox(
       width: double.infinity,
       child: Padding(
