@@ -35,6 +35,16 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     }
   }
 
+  void skipQuestion() {
+    if (currentQuestionIndex + 1 < questions.getLength()) {
+      setState(() {
+        currentQuestionIndex++;
+      });
+    } else if (currentQuestionIndex + 1 == questions.getLength()) {
+      nextScreen();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -54,7 +64,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              currentQuestion.question,
+              "[${currentQuestionIndex + 1}/${questions.getLength()}] ${currentQuestion.question}",
               style: GoogleFonts.lato(
                 color: const Color.fromARGB(170, 255, 255, 255),
                 fontSize: 24,
@@ -72,6 +82,16 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                 ),
               );
             }),
+            SizedBox(height: 10),
+            Align(
+              alignment: Alignment.center,
+              child: TextButton.icon(
+                onPressed: skipQuestion,
+                style: TextButton.styleFrom(foregroundColor: Colors.white),
+                label: Text("Skip"),
+                icon: Icon(Icons.skip_next),
+              ),
+            ),
           ],
         ),
       ),

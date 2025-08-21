@@ -31,7 +31,10 @@ class _QuizState extends State<Quiz> {
         questions: questions,
         nextScreen: () => setScreen("results"),
       ),
-      "results": ResultsScreen(questions: questions),
+      "results": ResultsScreen(
+        questions: questions,
+        nextScreen: () => setScreen("start"),
+      ),
     };
   }
 

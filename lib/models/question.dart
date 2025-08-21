@@ -19,6 +19,8 @@ class Question {
   set selectedAnswer(Answer? answer) {
     if (_answers.contains(answer)) {
       _selectedAnswer = answer;
+    } else if (answer == null) {
+      return _selectedAnswer = null;
     } else {
       throw ArgumentError(
         "The selected answer must be one of the provided answers.",
@@ -43,5 +45,16 @@ class Question {
       }
     }
     return null;
+  }
+
+  bool answeredCorrectly() {
+    if (getCorrectAnswer() == _selectedAnswer) {
+      return true;
+    }
+    return false;
+  }
+
+  void clear() {
+    selectedAnswer = null;
   }
 }

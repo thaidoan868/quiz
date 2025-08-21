@@ -22,10 +22,16 @@ class Questions {
     int numCorrectAnswers = 0;
     for (Question question in questions) {
       Answer? answer = question.selectedAnswer;
-      if (answer != null && answer == question.getCorrectAnswer()) {
+      if (answer == question.getCorrectAnswer()) {
         numCorrectAnswers++;
       }
     }
     return numCorrectAnswers;
+  }
+
+  void resetQuestions() {
+    for (Question question in questions) {
+      question.clear();
+    }
   }
 }
