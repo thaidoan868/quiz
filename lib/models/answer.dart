@@ -1,14 +1,13 @@
+import 'package:hive/hive.dart';
+part 'answer.g.dart';
+
+@HiveType(typeId: 0)
 class Answer {
-  // required
-  // getters only
-  final bool _isCorrect;
-  final String _answer;
+  @HiveField(0)
+  final bool isCorrect;
 
-  bool get isCorrect => _isCorrect;
+  @HiveField(1)
+  final String answer;
 
-  String get answer => _answer;
-
-  const Answer({required bool isCorrect, required String answer})
-    : _isCorrect = isCorrect,
-      _answer = answer;
+  const Answer({required this.isCorrect, required this.answer});
 }

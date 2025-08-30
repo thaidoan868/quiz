@@ -70,4 +70,4 @@ List<Question> questionsList = [
   ),
 ];
 
-Questions questions = Questions(questionsList);
+Questions defaultQuestions = Questions(questionsList);

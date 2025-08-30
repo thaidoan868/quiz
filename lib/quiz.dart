@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quiz/data/questions.dart';
+import 'package:quiz/data/database.dart';
 import 'package:quiz/screens/questions_screen.dart';
 import 'package:quiz/screens/results_screen.dart';
 import 'package:quiz/screens/start_screen.dart';
@@ -28,14 +30,18 @@ class _QuizState extends State<Quiz> {
     screens = {
       "start": StartScreen(nextScreen: () => setScreen("questions")),
       "questions": QuestionsScreen(
-        questions: questions,
         nextScreen: () => setScreen("results"),
       ),
       "results": ResultsScreen(
-        questions: questions,
         nextScreen: () => setScreen("start"),
       ),
     };
+  }
+
+  @override
+  void dispose() {
+    Hive.close();
+    super.dispose();
   }
 
   @override

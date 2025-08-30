@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quiz/data/database.dart';
 import 'package:quiz/models/questions.dart';
 import 'package:quiz/widgets/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
-  final Questions questions;
   final void Function() nextScreen;
-  const ResultsScreen({
-    super.key,
-    required this.questions,
-    required this.nextScreen,
-  });
+  const ResultsScreen({super.key, required this.nextScreen});
 
   @override
   Widget build(BuildContext context) {
+    final Questions questions = context.select<Database, Questions>(
+      (d) => d.questions,
+    );
+
     return SizedBox(
       width: double.infinity,
       child: Container(

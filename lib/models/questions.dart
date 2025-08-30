@@ -1,7 +1,11 @@
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quiz/models/answer.dart';
 import 'package:quiz/models/question.dart';
+part 'questions.g.dart';
 
+@HiveType(typeId: 2)
 class Questions {
+  @HiveField(0)
   List<Question> questions = [];
 
   Questions(this.questions);

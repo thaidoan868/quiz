@@ -1,43 +1,31 @@
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quiz/models/answer.dart';
 
+part 'question.g.dart';
+
+@HiveType(typeId: 1)
 class Question {
-  // required
-  // getters only
-  final String _question;
-  final List<Answer> _answers;
+  // Required fields
+  @HiveField(0)
+  final String question;
 
-  // can't be set by constructor
-  // getter and setter with conditions
-  Answer? _selectedAnswer;
+  @HiveField(1)
+  final List<Answer> answers;
 
-  String get question => _question;
+  // Field that can be updated
+  @HiveField(2)
+  Answer? selectedAnswer;
 
-  List get answers => List.unmodifiable(_answers);
+  Question({required this.question, required this.answers});
 
-  Answer? get selectedAnswer => _selectedAnswer;
-
-  set selectedAnswer(Answer? answer) {
-    if (_answers.contains(answer)) {
-      _selectedAnswer = answer;
-    } else if (answer == null) {
-      return _selectedAnswer = null;
-    } else {
-      throw ArgumentError(
-        "The selected answer must be one of the provided answers.",
-      );
-    }
-  }
-
-  Question({required String question, required List<Answer> answers})
-    : _question = question,
-      _answers = answers;
-
+  // Returns a shuffled list of answers
   List<Answer> getShuffledAnswers() {
-    final List<Answer> shuffledAnswers = List.of(_answers);
+    final List<Answer> shuffledAnswers = List.of(answers);
     shuffledAnswers.shuffle();
     return shuffledAnswers;
   }
 
+  // Returns the correct answer if present
   Answer? getCorrectAnswer() {
     for (Answer answer in answers) {
       if (answer.isCorrect) {
@@ -47,13 +35,12 @@ class Question {
     return null;
   }
 
+  // Checks if the selected answer is correct
   bool answeredCorrectly() {
-    if (getCorrectAnswer() == _selectedAnswer) {
-      return true;
-    }
-    return false;
+    return getCorrectAnswer() == selectedAnswer;
   }
 
+  // Clears the selected answer
   void clear() {
     selectedAnswer = null;
   }
