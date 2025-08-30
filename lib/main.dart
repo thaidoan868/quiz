@@ -23,7 +23,7 @@ Future<void> main() async {
   runApp(
     ChangeNotifierProvider<Database>.value(
       value: Database.I,
-      child: const Quiz(),
+      child: Quiz(),
     ),
   );
 }
