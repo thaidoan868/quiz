@@ -25,42 +25,39 @@ class ResultsScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: gradientDecoration,
-        child: SizedBox(
-          width: double.infinity,
-          child: Container(
-            margin: const EdgeInsets.all(40),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "You answered ${questions.getTotalCorrectAnswers()} out of ${questions.getLength()} questions correctly",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+        child: Container(
+          margin: const EdgeInsets.all(40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "You answered ${questions.getTotalCorrectAnswers()} out of ${questions.getLength()} questions correctly",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 30),
+              QuestionsSummary(questions: questions),
+              const SizedBox(height: 30),
+              TextButton.icon(
+                onPressed: () {
+                  questions.resetQuestions();
+                  context.go("/");
+                },
+                icon: Icon(Icons.refresh, color: Colors.white, size: 28),
+                style: TextButton.styleFrom(foregroundColor: Colors.white),
+                label: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: const Text(
+                    "Restart Quiz!",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 30),
-                QuestionsSummary(questions: questions),
-                const SizedBox(height: 30),
-                TextButton.icon(
-                  onPressed: () {
-                    questions.resetQuestions();
-                    context.go("/");
-                  },
-                  icon: Icon(Icons.refresh, color: Colors.white, size: 28),
-                  style: TextButton.styleFrom(foregroundColor: Colors.white),
-                  label: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: const Text(
-                      "Restart Quiz!",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -1,16 +1,22 @@
-# quiz
 
-A new Flutter project.
+# Quiz App
 
-## Getting Started
+**Team Member:** Doan Duy Thai
 
-This project is a starting point for a Flutter application.
+## Project Summary
+Quiz is a simple application that guides users through a series of questions and then shows their results.
 
-A few resources to get you started if this is your first Flutter project:
+## Description
+This app may seem simple—users answer a few questions (e.g., 4), and correct answers are highlighted in green. However, the true value of this project lies not just in what the app does, but **how** it’s built. It demonstrates proper use of core Flutter development practices, from **file structure** and **naming conventions** to integrating powerful tools like the **Hive database** for local storage and **GoRouter** for navigation.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The project serves as a **standardized, reference application** that showcases:
+- How to organize a Flutter project effectively (folders, files, packages).
+- How to implement adapters for data handling.
+- How to create a clean, scalable structure for future projects.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Though simple in functionality, this app will serve as a **go-to reference** for future Flutter development.
+
+## Screenshots
+![start-screen](documentation/screenshots/start-screen.png)
+![questions-screen](documentation/screenshots/questions-screen.png)
+![results-screen](documentation/screenshots/results-screen.png)

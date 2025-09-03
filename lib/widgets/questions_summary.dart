@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/data/colors.dart';
 import 'package:quiz/models/questions.dart';
 
 class QuestionsSummary extends StatelessWidget {
